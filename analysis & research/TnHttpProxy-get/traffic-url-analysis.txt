@@ -1,0 +1,148 @@
+
+
+
+03-06 13:51:42.695 15275 15357 D AutoSdkNavigationServiceJNI: createUrl via connection manager. priority: 0
+
+03-06 13:51:42.696 15275 15357 D AutoSdkNavigationServiceJNI: JniNetworkRequest begin, call get method
+03-06 13:51:42.696 15275 15357 D com.telenav.arp: arp: com.telenav.arp.sdk.c.b: Concurrent HTTP request count: 1
+
+03-06 13:51:42.914 15275 15357 D com.telenav.arp: arp: com.telenav.arp.sdk.c.b: Response delay: 0.217, URL: http://autodenali-mapsvc-stg-cdn.telenav.com/maps/my20_sa/traffics/traffic-service/maps/v4/ngx-traffic-tile/json?authorized_region=SA&map_source=here&map_version=17Q1&traffic_source=here&congested_flows=false&merge_flows=true&type=flow,incident&time=2019-03-06T05:51Z&locale=zh&tile_id=1342177424
+03-06 13:51:42.915 15275 15357 D AutoSdkNavigationServiceJNI: JniNetworkRequest end
+03-06 13:51:42.916 15275 15357 W Telenav : WARNING Traffic: traffic.backend-<log>[query] Get http body and response header fail or get empty body.
+
+
+================================================================================================
+
+03-06 13:51:17.240 15275 15357 D AutoSdkNavigationServiceJNI: createUrl via connection manager. priority: 0
+03-06 13:51:17.241 15275 15357 I AutoSdkNavigationServiceJNI: [15357]|INFO|NgxTrafficService.cpp(673)|[traffic.navkit.HTTP]begin TnHttpProxy getting. url: http://autodenali-mapsvc-stg-cdn.telenav.com/maps/my20_sa/traffics/traffic-service/maps/v4/ngx-traffic-tile/json?authorized_region=SA&map_source=here&map_version=17Q1&traffic_source=here&congested_flows=false&merge_flows=true&type=flow,incident&time=2019-03-06T05:51Z&locale=zh&tile_id=1342177424
+03-06 13:51:17.242 15275 15357 D AutoSdkNavigationServiceJNI: JniNetworkRequest begin, call get method
+03-06 13:51:17.242 15275 15357 D com.telenav.arp: arp: com.telenav.arp.sdk.c.b: Concurrent HTTP request count: 1
+
+03-06 13:51:17.468 15275 15357 D com.telenav.arp: arp: com.telenav.arp.sdk.c.b: Response delay: 0.224, URL: http://autodenali-mapsvc-stg-cdn.telenav.com/maps/my20_sa/traffics/traffic-service/maps/v4/ngx-traffic-tile/json?authorized_region=SA&map_source=here&map_version=17Q1&traffic_source=here&congested_flows=false&merge_flows=true&type=flow,incident&time=2019-03-06T05:51Z&locale=zh&tile_id=1342177424
+03-06 13:51:17.468 15275 15357 D AutoSdkNavigationServiceJNI: JniNetworkRequest end
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~process~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+打出log的语句：
+int DenaliConnectionManager::Get(const std::string& url, std::vector<char> & body, std::vector<std::string> & headers, int nPriority/* = E_PRIORITY_NORMAL*/, unsigned int nTimeOut/* = (unsigned int)(-1)*/)
+	int DenaliConnectionManager::NetworkRequest(const std::string& url, 
+												const std::vector<char> & postData,
+												std::vector<char> & body, 
+												std::vector<std::string> & headers, 
+												int nPriority /* = E_PRIORITY_NORMAL */, 
+												unsigned int nTimeOut /* = (unsigned int)(-1) */, 
+												bool bPostMode/* = false */,
+												const TnReadChunkListener * readDelegate/* = NULL*/, 
+												const TnWriteChunkListener * writeDelegate/* = NULL*/)
+		extern "C" bool JniNetworkRequest(const jbyteArray_& dataRequest, jbyteArray_& dataResponse, bool bPostMode/* = false*/)
+
+
+
+
+
+初始化connection manager：
+bool DenaliPluginCore::Init()
+{
+    if (!m_ptrConnectionManager)
+    {
+        m_ptrConnectionManager.reset(new Tn::AutoSdk::DenaliConnectionManager());
+    }
+
+    return (InitInternal() == 0);
+}
+
+			
+使用connection manager(调用TnHttpProxy get接口的是谁？需要确认，应该是map)：
+virtual traffic::HttpErrorCode Get(std::string const& url, const std::map<std::string, std::string>& request_header, std::vector<char>& body, std::map<std::string, std::string>& response_header)
+先要获取：	
+	SHAREDPTR_DECLARE<Tn::Url::AbstractUrl> TnMapServiceConfig::createUrl(int for_which) const
+		static SHAREDPTR_DECLARE<Tn::Url::AbstractUrl> createUrlInternal(int nPriority, int nConnectingTimeOut, int nReadingTimeOut)
+			Tn::AutoSdk::TnConnectionManager *pConnectionManager = g_pConnectionManager;	//#define g_pConnectionManager    (g_pNavmapPluginCore->GetConnectionManager())
+			
+然后去使用，get：
+	Tn::Url::ErrorCode Get(std::string const & url, 
+							   std::vector<char>& body, 
+							   std::vector<std::string> & headers, 
+							   time_t ifmodifiedsince=0, 
+							   std::string const & rangeString=std::string())
+		int DenaliConnectionManager::Get(const std::string& url, std::vector<char> & body, std::vector<std::string> & headers, int nPriority/* = E_PRIORITY_NORMAL*/, unsigned int nTimeOut/* = (unsigned int)(-1)*/)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+初始化TnHttpProxy(是navkit先初始化TnHttpProxy， 然后设置给trafficsetting)：
+bool NgxMapService::initTraffic()
+	m_pIpGet = new TnHttpProxy(m_configDelegate);
+	        TrafficSettings& SetCloud(const std::string& url, ::traffic::TnIpGet* handler)	//handler即为m_pIpGet， 设给TrafficSettings内部的 ::traffic::TnIpGet* cloud_handler_;
+
+
+==========================================
+后台调用get：
+::traffic::SERVICE_ERROR_CODE TrafficProfile::Initialize(const TrafficSettings& settings)
+
+先获取：
+::traffic::SERVICE_ERROR_CODE TrafficProfile::Initialize(const TrafficSettings& settings)
+	::traffic::TnIpGet* CloudHandler() const { return cloud_handler_; }
+		//先设置给TrafficProfile的 HttpGetMonitor http_monitor_;
+		//然后
+		//monitor_settings.SetCloud(settings.CloudUrl(), &http_monitor_);
+		//return service_->Initialize(monitor_settings);
+		//即为
+		    SERVICE_ERROR_CODE TrafficServiceImpl::Initialize(const tn::traffic::TrafficSettings& settings)
+				bool TrafficResource::Reset(const tn::traffic::TrafficSettings& settings)
+					ip_handle_ = settings.CloudHandler();	//最终设置给了TrafficResource的 ip_handle_
+				
+
+
+template<typename RequestType, typename ResultType>
+bool query(ResultType& result, const RequestType& request)
+
+	bool tiles_request_t::build_url(std::string& url, const TrafficContext& context) const
+	::traffic::TnIpGet* handler = ::traffic::TnIpGet* GetIpHandle() const { return ip_handle_; };
+	::traffic::OK == handler->Get(url, context_.Resource().GetCloudConfig().Header(), body, response_header)
+	
+
+		================================================================================
+		比如tiles_request_t::build_url：
+	    bool tiles_request_t::build_url(std::string& url, const TrafficContext& context) const
+		{
+			const CloudConfig& cfg = context.Resource().GetCloudConfig();
+			if (!cfg.QueryTilesUrl().empty())
+			{
+				std::ostringstream stream;
+				
+				stream << cfg.QueryTilesUrl() << "?";
+				k_query_constant(stream, cfg);
+				
+				stream << "&" << MERGE_FLOWS << "=" << (cfg.MergeFlows() ? "true" : "false");
+				
+				stream << "&" << TIME << "=" << RequestTime(context.GetTime());
+				stream << "&" << LOCALE << "=" << RequestLocale(context.GetLangAndUnit());
+				stream << "&" << TYPE << "=" << filter_;
+				stream << "&" << TILE_IDS << "=" << ids_;
+				
+				url = stream.str();
+				
+				return true;
+			}
+			return false;
+		}
+		================================================================================
+		也就是说， 最终的url， 是由 TrafficContext 决定的：
+		explicit CloudQuery(const TrafficContext& context) : context_(context) { }
+		===============
+		SERVICE_ERROR_CODE TrafficUpdater::TnIpUpdateCache(const TrafficDataTypeFilter& data_type_filter, const TrafficLanguageAndUnit& language_unit, const std::string& country_code)
+		{
+			tn::traffic::CloudQuery query(context_);
+			
+		or===》
+		HeartBeatStatus TrafficServiceImpl::HeartbeatIP(bool payload, int& speed_in_bps)
+		{
+			tn::traffic::CloudQuery query(context_);
+		
+		==============
+			explicit TrafficUpdater(const tn::traffic::TrafficContext& context)
+            : context_(context)
+		
+		
+
+
+

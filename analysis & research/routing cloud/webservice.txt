@@ -1,0 +1,10 @@
+
+int main()
+{
+	webservice::Ipc_Server server(7290);
+	server.initialize(default_config);
+	server.start();
+
+    return 0;
+}
+

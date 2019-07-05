@@ -1,0 +1,142 @@
+bool DenaliPluginCore::Init()
+{
+    if (!m_ptrConnectionManager)
+    {
+        m_ptrConnectionManager.reset(new Tn::AutoSdk::DenaliConnectionManager());
+    }
+
+    return (InitInternal() == 0);
+}
+
+
+if (E_PLUGIN_WORKING_MODE_HYBRID == m_nPluginWorkingMode)
+    {
+        else
+        {
+            Tn::AutoSdk::TnConnectionManager* pConnectionManager = GetConnectionManager();
+            if (pConnectionManager)
+            {
+                TnSharedPtr<Tn::AutoSdk::TnConnectStatusListener> pListener(new LocalNetworkConnectStatusListener(this));
+                pConnectionManager->AddConnectStatusListener(pListener);
+            }
+        }
+		
+	m_pMapServiceConfig = TnSharedPtr<TnMapServiceConfig>(new TnMapServiceConfig);
+		
+	bool success = m_pMapService->initialise(m_pMapServiceConfig.get());
+
+	 
+	  pRoutingRequestItemInternal.reset(new RoutingRequestItemInternal(this, &oRoutingRequestItem, configDelegate));
+
+					  
+	  const com::telenav::map::MapServiceConfig& configDelegate = pRoutingRequestItemInternal->m_oConfigDelegate;
+
+		SHAREDPTR_DECLARE<Tn::Url::AbstractUrl> pUrl = configDelegate.createUrl(COM_TELENAV_MAP::MapServiceConfig::URL_FOR_ROUTING);	////////////
+		  
+		  nUrlErr = pUrl->Get(strRequest_URL, *pvResponseData, vHttpHeading);
+
+		  
+		  ===》
+		  TnSharedPtr<Tn::Url::AbstractUrl> DenaliConnectionManager::createUrl(int nPriority/* = E_PRIORITY_NORMAL*/, unsigned int nRequestTimeOut/*=(unsigned int)(-1)*/)
+{
+    ANDROID_LOG_PRINT_EX(ANDROID_LOG_DEBUG, AUTO_SDK_JNI_TAG, "createUrl via connection manager. priority: %d\n", nPriority);
+
+    Tn::AutoSdk::TnConnectionManager::e_RequestPriority nRequestPriority = (Tn::AutoSdk::TnConnectionManager::e_RequestPriority)nPriority;
+    return TnSharedPtr<Tn::Url::AbstractUrl>(new DenaliUrlRequestImplement(this, nRequestPriority, nRequestTimeOut));	////////////
+}
+
+-------
+class DenaliUrlRequestImplement : public Tn::Url::AbstractUrl
+------
+
+
+
+nUrlErr = pUrl->Get(strRequest_URL, *pvResponseData, vHttpHeading);	////////////
+	Tn::Url::ErrorCode Get(std::string const & url, 
+					   std::vector<char>& body, 
+					   std::vector<std::string> & headers, 
+					   time_t ifmodifiedsince=0, 
+					   std::string const & rangeString=std::string())
+    {
+        body.clear();
+
+        if (m_pConnectionManager)
+        {
+            int nErr = m_pConnectionManager->Get(url, body, headers, m_nRequestPriority, m_nTimeOut);
+            m_nLastError = ConvertErrorCode(nErr);
+            return m_nLastError;
+        }
+
+        return Tn::Url::ErrorCode_UNSUPPORTED;
+    }
+---------------------
+int DenaliConnectionManager::Get(const std::string& url, std::vector<char> & body, std::vector<std::string> & headers, int nPriority/* = E_PRIORITY_NORMAL*/, unsigned int nTimeOut/* = (unsigned int)(-1)*/)
+{
+    std::vector<char> postData;
+    return NetworkRequest(url, postData, body, headers, nPriority, nTimeOut, false);
+}
+---------------------
+int DenaliConnectionManager::NetworkRequest(const std::string& url, 
+                                            const std::vector<char> & postData,
+                                            std::vector<char> & body, 
+                                            std::vector<std::string> & headers, 
+                                            int nPriority /* = E_PRIORITY_NORMAL */, 
+                                            unsigned int nTimeOut /* = (unsigned int)(-1) */, 
+                                            bool bPostMode/* = false */,
+                                            const TnReadChunkListener * readDelegate/* = NULL*/, 
+                                            const TnWriteChunkListener * writeDelegate/* = NULL*/)
+
+
+
+
+			ret = JniNetworkRequest(oRequestdata, responseData, bPostMode);
+				//将protobuf的字节流bytearray转化为Java的的字节流ByteArray，最后调用
+					jbyteArray responseData_ = (jbyteArray)(env->CallObjectMethod(networkRequestObject, networkRequestMethodId, byteArray));
+
+		    ::com::telenav::proto::auto_sdk::ConnectionResponse oConnectionResponse;
+			if (false == oConnectionResponse.ParseFromArray(responseData.ptrData, responseData.nDataLength))
+			//将Java的的字节流ByteArray转化为protobuf的字节流bytearray，最后反序列化成ConnectionResponse
+			//当然还要把反序列化结果，转化body， headers等等结果
+			
+-------------------
+extern "C" bool JniNetworkRequest(const jbyteArray_& dataRequest, jbyteArray_& dataResponse, bool bPostMode/* = false*/)
+
+extern "C" void JNI_SetNetworkConnectInfo(jobject networkRequestObject, jmethodID networkGetMethodId, jmethodID networkPostMethodId)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+启动一个Java程序，如果没有手动创建其它线程，默认会有两个线程在跑，一个是main线程，另一个就是GC线程（负责将一些不再使用的对象回收）
+------
+jclass GetObjectClass(jobject obj):通过对象实例来获取jclass(类对象)，相当于java中的getClass方法
+
+GetFieldID:得到java类中的参数ID，只能获取类中声明为 public的参数或方法
+GetMethodID:得到java类中方法的ID，只能调获取类中声明为 public的参数或方法
+     第一个参数：JNI接口对象；第二个参数：Java类对象；第三个参数：参数名（或方法名）；第四个参数：该参数（或方法）的签名。
+	 
+NewGlobalRef:创建 obj 参数所引用对象的新全局引用。obj 参数既可以是全局引用，也可以是局部引用。全局引用通过调用DeleteGlobalRef() 来显式撤消。
+DeleteGlobalRef:删除 globalRef 所指向的全局引用	
+DeleteLocalRef:删除 localRef所指向的局部引用
+
+全局引用：调用NewGlobalRef基于局部引用创建，会阻GC回收所引用的对象。可以跨方法、跨线程使用。JVM不会自动释放，必须调用DeleteGlobalRef
+局部引用：通过NewLocalRef和各种JNI接口创建，会阻止GC回收所引用的对象，不在本地函数中跨函数使用，不能跨线前使用。函数返回后局部引用所引用的对象会被JVM自动释放，或调用DeleteLocalRef释放
+弱全局引用：调用NewWeakGlobalRef基于局部引用或全局引用创建，不会阻止GC回收所引用的对象，可以跨方法、跨线程使用。引用不会自动释放，在JVM认为应该回收它的时候（比如内存紧张的时候）进行回收而被释放。或调用DeleteWeakGlobalRef手动释放
+
+JNIEnv类型是一个指向全部JNI方法的指针。该指针只在创建它的线程有效，不能跨线程传递。
+JavaVM是虚拟机在JNI中的表示，一个JVM中只有一个JavaVM对象，这个对象是线程共享的。
+
+如一个代码段没有其他方式获取它自身线程的JNIEnv，你可以共享JavaVM，用GetEnv来获取线程的JNIEnv。(假设这个线程有一个JavaVM;参见下面的AttachCurrentThread。)
+jint AttachCurrentThread(JavaVM* vm , JNIEnv** env , JavaVMAttachArgs* args)：
+JNIEnv指针仅在创建它的线程有效。如果我们需要在其他线程访问JVM，那么必须先调用AttachCurrentThread将当前线程与JVM进行关联，然后才能获得JNIEnv对象。当然，我们在必要时需要调用DetachCurrentThread来解除链接
+
+ A JNI interface pointer (JNIEnv*) is passed as an argument for each native function mapped to a Java method, allowing for interaction with the JNI environment within the native method.This
+ JNI interface pointer can be stored, but remains valid only in the current thread. Other threads must first call AttachCurrentThread()to attach themselves to the VM and obtain a JNI interface
+ pointer. Once attached, a native thread works like a regular Java thread running within a native method. The native thread remains attached to the VM until it callsDetachCurrentThread()
+to detach itself.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	 
+	 拿到的结果body是char数组，将其转化为rapidjson的Document类型（DOM）
+	 然后使用后台继承自JsonInterface的RouteResponse的接口FromJson，将DOM对象转为相应RouteResponse内的数据结构
+	 最后调用ProtoJsonConverter::ConvertRouteResponse，将RouteResponse转化为COM_TELENAV_PROTO_MAP_DIRECTIONS::RouteResponse （json转protobuf）
+	 
+	 
+	 
+	 

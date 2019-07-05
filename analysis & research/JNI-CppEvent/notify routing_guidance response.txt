@@ -1,0 +1,38 @@
+
+
+
+
+
+		pAsyncNotifyParam->nNotifyCode = TnRouteProviderBase::E_NOTIFY_CODE_CALC_ROUTE;
+		pAsyncNotifyParam->wParam      = pRouteInfoInternal_ex;
+
+		pAsyncNotifyParam->lParam          = 0;
+        pAsyncNotifyParam->nErrorCode      = nErrorCode;
+		
+		--------------------------------------------------------------
+		ROUTE_CALC_RESPONSE_INFO route_calc_response_info.vRouteResult.push_back(info);
+		...
+		void*  pWparam = &route_calc_response_info;
+		========================
+		const PROUTE_INFO_INTERNAL proute_info_internal = pRouteInfoInternal->vRoutes.at(i);
+		ptrThis->m_vManagedRoutes.push_back(proute_info_internal);
+		--------------------------------------------------------------
+		调用：
+		JObjectPtArray  *pRoutingServiceResponseHandler = ptrThis->m_pRoutingServiceResponseHandler;
+		PROUTING_SERVICE_RESPONSE_HANDLER_ITEM pRoutingServiceResponseHandlerItem = (PROUTING_SERVICE_RESPONSE_HANDLER_ITEM)(pRoutingServiceResponseHandler->GetAt(i));
+
+		pRoutingServiceResponseHandlerItem->ptrHandler(pRoutingServiceResponseHandlerItem->ptrUserData, oAsyncNotifyParam.nNotifyCode,pWparam, &nErrorCode);
+		
+		注册：
+		JBool TnNavAgent::Register2LMoreRouteProviderEx()
+		m_pLMoreRouteProvider->RegisterRoutingServiceResponseHandler(TnNavAgent::GetResponsFromLMoreRouteProviderEx, this);
+		
+		JBool TnHybrideRouteProvider::RegisterRoutingServiceResponseHandler(fptrRoutingServiceResponseProc ptrHandler, void* ptrUserData)
+			    pRoutingServiceResponseHandlerItem->ptrHandler  = ptrHandler;
+				pRoutingServiceResponseHandlerItem->ptrUserData = ptrUserData;
+				m_pRoutingServiceResponseHandler->Append(pRoutingServiceResponseHandlerItem);
+
+		
+		调用结果：
+		void TnNavAgent::GetResponsFromLMoreRouteProviderEx(void* pUserData, JUint32 nNotifyCode, void* wParam, void* lParam)
+			void TnNavAgent::GetResponsFromLMoreRouteProviderInternal(RouteGuidanceResponseParam& oRouteGuidanceResponseParam)

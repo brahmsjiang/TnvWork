@@ -1,0 +1,56 @@
+	navkit prequest参数设置：
+	起始点只有一个：
+	COM_TELENAV_PROTO_MAP_DIRECTIONS::Location *pLocationOri = routeRequest.mutable_origin();
+	if (prouting_param->ori.fId.IsValid())
+    {
+        (prouting_param->ori.fId).ToEdgeIdString(strEdgeFeatureId);
+		pLocationOri->add_edge_id(strEdgeFeatureId);
+    }
+	终点有：
+	COM_TELENAV_PROTO_MAP_DIRECTIONS::Location *pLocationDst = routeRequest.mutable_destination();
+    ConvertLocation(*pLocationDst, prouting_param->pAddressDst);
+
+	
+	
+	
+	-------------------------------------------------
+	//CreateDestinationFindRequest作用：
+	//根据request参数里面的edgeid，看看再已加载的路网中是否已经存在对应的edgeid
+    OriginFindRequest IRouteGenerator::CreateOriginFindRequest(const dir_v4::RouteRequest* pRequest)
+		CHECK_COMBINE_ID_STAUTS combineIdStatus = NgxAttributeReader::CheckCombinedID(pRequest->origin.edge_ids[i], newCombineId);
+			    SRouteSegment* pcurrRouteSegment = CRoutingMap::instance()->GetSegment(origId.directedEdgeId_.tileId, origId.directedEdgeId_.index);
+				   //先根据tileid找出哪个tile
+				   TMapOfTilePtr tp = GetTile(tileId);
+				   //返回所在tile的segment，其实就是tile所对应的wayid
+				   return &(*tp)[index];
+   
+			//这个tile是从哪里来的呢？
+			bool CRoutingMap::LoadTile(const int tileId)
+				m_segmentRouting.addTile(tileId, tilePtr->road_links().size());
+					mTileMaps[iTileId]->reserve(iNbSegmentsInTile);//just reserve...
+					nbSegments += iNbSegmentsInTile;//属于
+					//返回vector tile里面的某一个新的tile的指针
+					vector<TMapOfTilePtr> mTileMaps;
+	-------------------------------------------------
+	// do routing.
+	//GenerateRoute作用
+	if (!GenerateRoute(originRequest, destinationRequest, pRequest, multiRoutePara, false, routeResult)) 
+			// derive origin， 主要为了填充vector<ODSegment> m_vod_segments;  // the result segments.
+            if (!m_pODFinder->Derive(originRequest, originResponse, routeErrCode)) 
+				//先填充std::vector<ODCandidate>
+				CollectCandidates(m_vtarget_featids[i]);//m_vtarget_featids就是request自带的featids，如起点一般只有一个
+					//根据ngx的接口，获取request info里面featid所对应的ngx roadlink，然后拿roadlink获得相应的m_vod_candidates（向前或向后）
+					CollectCandidates(featID.tileId, featID.index, featID.dir, segment, m_vod_candidates);
+				//根据拿到的m_vod_candidates，判断是否可以到达（包含限制条件），m_vod_candidates过滤掉不可到达的路段
+				FilterOriginCandidatesFeatureByNavigability
+				//m_vod_candidates转化为m_vod_segments
+				void ODFinder::OptimizeOriginCandidates(bool derivedByFeatIDs)
+					ConvertCandidatesToODSegments();
+				// 填充需返回的response.
+				FillOriginResponse(oResponse);
+
+			// do routing.
+			routeErrCode = m_pRouteAlgorithm->routeFromTo_(originRequest.m_point_target, originSegments, destinationRequest.m_point_target, destinationSegments, multiRoutePara, bToDest, routeResult, m_abortFlag);
+
+
+   

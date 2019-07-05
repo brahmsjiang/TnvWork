@@ -1,0 +1,91 @@
+
+
+       routeErrCode = m_pRouteAlgorithm->routeFromTo_(originRequest.m_point_target, originSegments, destinationRequest.m_point_target, destinationSegments, multiRoutePara, bToDest, routeResult, m_abortFlag);
+
+			//根据tileId，edgeid找到相应的tile以及edge（对应map中的）
+		   SRouteSegment &Segment = *CRoutingMap::instance()->GetSegment(directionEdgeId.tileId, directionEdgeId.index);
+
+		   if (bIgnorePromotion)
+				std::vector<ivec2> vPointsFromOrigin;
+				vPointsFromOrigin.push_back(originPoint);	//originPoint是用户传来的目的地经纬度，反方向的pOppoGraph->GetTargetPoint() 
+				vPointsFromOrigin.push_back(currentPoint);	//根据起点m_currQueueItem所在的SegmentId的edge_id （从SearchGraph获得），拿到相应的SRouteSegment（从CRoutingMap获得）
+
+			//check current level for multi meet
+			int nFcClass = static_cast<int>(CRoutingMap::instance()->GetTile(directionEdgeId.tileId)->fcClass);
+
+			//get connected edges from travel network ( data provided by NGX )
+			int nConnectedLink = pCurrGraph->GetNetwork()->SetCurrent(directionEdgeId, fcLevel, m_vLinkedEdges, linkType);
+
+				//当前edge所连接的edge数
+				m_nNextEdgeCount = m_pCurrNode->num_connected_edges();
+				
+				//对每个所连接的edge进行遍历
+				for (int i = 0; i < m_nNextEdgeCount; ++i)
+					//获取该edge所对应的DirectedEdgeId，并将其设为next edgeinfo
+					UIntDirectedEdgeId sid = m_pCurrNode->GetConnectedEdge(i);
+					DirectedEdgeId edgeid(sid);
+					nextEdgeInfo.edgeid = edgeid;
+					
+					//根据next edgeinfo算得相应的 SRouteSegment ， TMapOfTile 以及 RoadAttribute
+					const SRouteSegment* pnextRouteSegment = m_pRouteMap->GetSegment(nextEdgeInfo.edgeid.tileId, nextEdgeInfo.edgeid.index);
+					const TMapOfTilePtr pTile = CRoutingMap::instance()->GetTile(nextEdgeInfo.edgeid.tileId);
+					RoadAttribute roadAttr = NgxAttributeReader::GetAttributeObj(nextEdgeInfo.edgeid);
+					
+					//跟据RoadAttribute设置所需的roadcount。。等等属性判断下个edge是否可到达，并填入m_vNextEdge，m_vFilterReason
+					//如果根据以上判断，该edge可到达则填入到TravelNetwork::SetCurrent的参数vLinkedEdges中
+			
+			//for single connected edges
+			const ivec2& endPoint = CRoutingMap::instance()->GetCrossing(directionEdgeId.dir == DirectedEdgeId::eDir_Backward ? popSegment->from() : popSegment->to()).getPos();
+			//由endpoint（当前edge的起点或终点，取决于方向）得到m_nLastGrid， 根据一定的半径扩展tiles，将结果存入m_vTileIds
+            m_pRouteGraphExtender->ExtendGraph(endPoint, fcLevel);	
+			
+			// load all new tiles，根据扩展得到的新tiles再把相应的edge load进去
+			m_pRouteGraphExtender->LoadTiles()
+			//再做一遍，以防有遗漏？get connected edges from travel network ( data provided by NGX )
+			nConnectedLink = pCurrGraph->GetNetwork()->SetCurrent(directionEdgeId, fcLevel, m_vLinkedEdges, linkType);
+			
+			RestrictionList outRestrictionRel;
+			//get all the restrictions on the edge
+			
+			=====》
+			bool bRetryRelax = true;
+			while (bRetryRelax)
+			{
+				bRetryRelax = false;
+				//从m_vNextEdge抽出下一个可用的edge，当然如果下个edge不可用返回false
+				while(pCurrGraph->GetNetwork()->Next(nextDeEdgeId, remoteNode, false, pCurrGraph->m_LevelPromoteStrategy.GetCurrentLevel()))
+				{
+					++routeStatic.reachCount;	//累加reachCount
+					
+					// handling cost
+					std::vector<DirectedEdgeId> vSingleConnectedEdges.push_back(nextDeEdgeId);
+					{
+                        LinkType singlelinkType;
+                        int nNextConnectedLink = pSingleGraph->GetNetwork()->SetCurrentForSingleConnect(nextDeEdgeId, fcLevel, singlelinkType);
+
+				
+				
+				
+				
+				
+				
+				
+				
+
+			
+			
+			
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				

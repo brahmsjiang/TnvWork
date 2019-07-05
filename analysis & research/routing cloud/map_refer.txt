@@ -1,0 +1,202 @@
+====== Item Details ====== 
+"RoadTile" : "006752", "LinkIndex" : "002576",
+"wayId" : 777792833,
+"adminId" : 359,
+"fcLevel" : 3,
+"attributeIndex" : 16622,
+"speedPatternIdFwd" : 540,
+"speedPatternIdBwd" : 121,
+"historySpeedFwd" : 39,
+"historySpeedBwd" : 40,
+"avgHeight" : 0,
+"boundingBox" : [39420671, 50470788, 39421029, 50471044],
+"latlonBox" : [40.697551, -74.265521, 40.697031, -74.264561],
+"length" : 100,
+	"oneWay" : 0,
+	"roundAbout" : 0,
+	"ramp" : 0,
+	"toll" : 0,
+	"bridge" : 0,
+	"tunnel" : 0,
+	"city" : 0,
+	"accessAuto" : 1,
+	"accessPeds" : 1,
+	"hov" : 1,
+	"maxspeed_forward" : 25,
+	"maxspeed_backward" : 25,
+	"speedsrc" : 1,
+	"speedunit" : 0,
+	"isUnpaved" : 0,
+	"type" : 17,
+	"hasAccessNoTags" : 0,
+	"hasAccessDestinationTag" : 0,
+	"hasAccessPermissiveTag" : 0,
+	"lanes" : 0,
+	"lanes_backward" : 1,
+	"lanes_forward" : 1,
+	"limitedAccess" : 0,
+	"divider" : 0,
+	"adas_bua" : 1,
+	"adas_divideroad" : 0,
+	"adas_drivingside" : 1,
+	"adas_urban" : 1,
+	"adas_complex_intersection" : 0,
+	"adas_form_of_way" : 3,
+	"adas_route_type" : 16,
+	"sc" : 11,
+	"rt" : 4,
+	"rst" : 1,
+	"rail_way" : 0,
+	"through_traffic" : 1,
+	"zlevelfromnode" : 4,
+	"zleveltonode" : 4,
+	"timezone" : 7,
+	"dst" : 8,
+	"grade_category" : 0,
+	"uturn_allowed" : 1,
+	"in_process_data" : 0,
+	"low_mobility" : 0,
+	"motorcar" : 1,
+	"bus" : 1,
+	"taxi" : 1,
+	"truck" : 1,
+	"delivery" : 1,
+	"emergency" : 1,
+"names" : [
+	{"nameId" : 123152, "type" : 1, "text" : "Vauxhall Rd", "category": "name", "language": "eng"},
+	{"nameId" : 178471, "type" : 141, "text" : "\"vAks|%hOl *\"rod", "category": "phonetics", "language": "eng"},
+	{"nameId" : 655321, "type" : 152, "text" : "boks|xol \"rrouD", "category": "phonetics", "language": "nas"},
+	{"nameId" : 149796, "type" : 36, "text" : "Vaux Hall Rd", "category": "alt_name", "language": "eng"},
+	{"nameId" : 178467, "type" : 141, "text" : "\"vAks \"hOl *\"rod", "category": "phonetics", "language": "eng"},
+	{"nameId" : 623725, "type" : 152, "text" : "\"bo \"xol \"rrouD", "category": "phonetics", "language": "nas"},
+	{"nameId" : 509283, "type" : 71, "text" : "CR-630", "category": "ref", "language": "eng"},
+	{"nameId" : 89609, "type" : 141, "text" : "\"kaUn|ti \"rut \"sIks *\"T@r|ti", "category": "phonetics", "language": "eng"},
+	{"nameId" : 157059, "type" : 152, "text" : "\"se \"e|rre sei|\"sjen|tos \"trein|ta", "category": "phonetics", "language": "nas"},
+	{"nameId" : 245457, "type" : 206, "text" : "01840000400", "category": "ref_si"},
+	{"nameId" : 221033, "type" : 195, "text" : "+120+20562|-120-20561", "category": "tmcid"},
+	{"nameId" : 339457, "type" : 235, "text" : "1942-1960E"},
+	{"nameId" : 339489, "type" : 236, "text" : "1943-1955O"}
+],
+"admins" : [
+	{
+		"relId" : 384053,
+		"parentId" : 15,
+		"peerId" : 360,
+		"childId" : 0,
+		"names" : [
+			{"nameId" : 121736, "type" : 1, "text" : "Union Twp", "category": "name", "language": "eng"},
+			{"nameId" : 513393, "type" : 196, "text" : "L4", "category": "admin_level"},
+			{"nameId" : 495781, "type" : 215, "text" : "9", "category": "admin_order"}
+		]
+	},
+	{
+		"relId" : 384013,
+		"parentId" : 2,
+		"peerId" : 18,
+		"childId" : 16,
+		"names" : [
+			{"nameId" : 121640, "type" : 1, "text" : "Union", "category": "name", "language": "eng"},
+			{"nameId" : 513391, "type" : 196, "text" : "L3", "category": "admin_level"},
+			{"nameId" : 483121, "type" : 215, "text" : "8", "category": "admin_order"}
+		]
+	},
+	{
+		"relId" : 31,
+		"parentId" : 1,
+		"peerId" : 0,
+		"childId" : 3,
+		"names" : [
+			{"nameId" : 83408, "type" : 1, "text" : "New Jersey", "category": "name", "language": "eng"},
+			{"nameId" : 144490, "type" : 36, "text" : "NJ", "category": "alt_name", "language": "eng"},
+			{"nameId" : 151216, "type" : 37, "text" : "Nueva Jersey", "category": "alt_name", "language": "spa"},
+			{"nameId" : 151226, "type" : 39, "text" : "New Jersey", "category": "alt_name", "language": "fre"},
+			{"nameId" : 151254, "type" : 45, "text" : "Nova Jersey", "category": "alt_name", "language": "por"},
+			{"nameId" : 513389, "type" : 196, "text" : "L2", "category": "admin_level"},
+			{"nameId" : 245797, "type" : 215, "text" : "1", "category": "admin_order"}
+		]
+	},
+	{
+		"relId" : 365658,
+		"parentId" : 0,
+		"peerId" : 0,
+		"childId" : 2,
+		"names" : [
+			{"nameId" : 121762, "type" : 1, "text" : "United States", "category": "name", "language": "eng"},
+			{"nameId" : 149580, "type" : 36, "text" : "USA", "category": "alt_name", "language": "eng"},
+			{"nameId" : 151214, "type" : 37, "text" : "Estados Unidos", "category": "alt_name", "language": "spa"},
+			{"nameId" : 151224, "type" : 38, "text" : "Vereinigte Staaten", "category": "alt_name", "language": "ger"},
+			{"nameId" : 151232, "type" : 39, "text" : "États-Unis", "category": "alt_name", "language": "fre"},
+			{"nameId" : 151238, "type" : 40, "text" : "Stati Uniti", "category": "alt_name", "language": "ita"},
+			{"nameId" : 151242, "type" : 41, "text" : "Spojené Štáty", "category": "alt_name", "language": "slo"},
+			{"nameId" : 151246, "type" : 43, "text" : "Yhdysvallat", "category": "alt_name", "language": "fin"},
+			{"nameId" : 151250, "type" : 44, "text" : "De Forenede Stater", "category": "alt_name", "language": "dan"},
+			{"nameId" : 151252, "type" : 45, "text" : "Estados Unidos", "category": "alt_name", "language": "por"},
+			{"nameId" : 151258, "type" : 46, "text" : "Amerikas Förenta Stater", "category": "alt_name", "language": "swe"},
+			{"nameId" : 151262, "type" : 47, "text" : "Amerika Birleşik Devletleri", "category": "alt_name", "language": "tur"},
+			{"nameId" : 151268, "type" : 49, "text" : "Stany Zjednoczone", "category": "alt_name", "language": "pol"},
+			{"nameId" : 151272, "type" : 51, "text" : "美國", "category": "alt_name", "language": "cht"},
+			{"nameId" : 151276, "type" : 52, "text" : "美国", "category": "alt_name", "language": "chi"},
+			{"nameId" : 151280, "type" : 53, "text" : "Сполучені Штати", "category": "alt_name", "language": "ukr"},
+			{"nameId" : 151284, "type" : 54, "text" : "Соединенные Штаты Америки", "category": "alt_name", "language": "rus"},
+			{"nameId" : 151288, "type" : 56, "text" : "Verenigde Staten", "category": "alt_name", "language": "dut"},
+			{"nameId" : 151292, "type" : 57, "text" : "Egyesült Államok", "category": "alt_name", "language": "hun"},
+			{"nameId" : 151296, "type" : 58, "text" : "De Forente Stater", "category": "alt_name", "language": "nor"},
+			{"nameId" : 151300, "type" : 59, "text" : "Spojené Státy", "category": "alt_name", "language": "cze"},
+			{"nameId" : 513387, "type" : 196, "text" : "L1", "category": "admin_level"},
+			{"nameId" : 245449, "type" : 215, "text" : "0", "category": "admin_order"}
+		]
+	}
+],
+"coordinates" : [
+	{"latlon" : [40.697031, -74.264561], "mercator" : [39421029, 50471044]},
+	{"latlon" : [40.697120, -74.264810], "mercator" : [39420936, 50471000]},
+	{"latlon" : [40.697281, -74.265092], "mercator" : [39420831, 50470921]},
+	{"latlon" : [40.697419, -74.265312], "mercator" : [39420749, 50470853]},
+	{"latlon" : [40.697551, -74.265521], "mercator" : [39420671, 50470788]}
+],
+"fromNode" : {
+	"nodeId" : 22061777, 
+	"routingRelation" : {
+		"relations" : [
+		]
+	},
+	"guidanceRelation" : {
+		"relations" : [
+		]
+	}
+},
+"toNode" : {
+	"nodeId" : 156930958, 
+	"routingRelation" : {
+		"relations" : [
+		]
+	},
+	"guidanceRelation" : {
+		"relations" : [
+			{
+				"relId" : 3655627,
+				"relType" : "traffic_sign",
+				"via" : 156930958,
+				"from" : 777792834,
+				"pointx" : 0,
+				"pointy" : 0,
+				"type" : 14,
+				"vehicleType" : 111,
+				"vehicleTypeDes" : "motor:1 emergency:1 bus:1 taxi:1 bike:0 Ped:1 delivery:1",
+				"category" : 3
+			}
+		]
+	}
+}
+====== Group Details ====== 
+"linkCount" : 2990,
+"nameCount" : 5071,
+"dispCount" : 0,
+"regionCode" : 31,
+"fcLevel" : 3,
+"tileNumber" : 6752,
+"versionNumber" : 18093005,
+"isUpdate" : 0,
+"timeStamp" : 0,
+"boundingBox" : [39351075, 50425865, 39421398, 50487439],
+"latlonBox" : [40.788842, -74.452192, 40.663682, -74.263571]

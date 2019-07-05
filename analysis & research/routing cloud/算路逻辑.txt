@@ -1,0 +1,55 @@
+
+ROUTING_ERROR_CODE BiDirRouteAlgorithm::routeFromTo_(const ivec2& startPoint, const std::vector<RoutingEndSegment>& startSegments, const ivec2& toPoint, const std::vector<RoutingEndSegment>& toSegments, bool bRetryIgnoreTR, MeetInfo& meetInfo, const bool bRecalcRoute)
+
+	SetOrig
+		ShortestCostModel::CalculateEdgeTravelCost	《==DOUBLE* pWeight, 返回值是左起第三个参数
+			// Get shortest cost fisrt, shortest cost do not use dymaic speed
+			CalculateEdgeBaseCost	//通过RCM(Routing Cost Modal speed, static speed) 静态速度获得最短花费时间
+			COST_TRANS_ADDITION	//根据标准选项对刚才获得的最短花费时间进行加权
+			
+			// Get fastest cost, fastest cost use dynmaic speed
+			CalculateEdgeBaseCost	//通过动态速度获得最短花费时间
+			COST_TRANS_ADDITION
+			
+			dShortestCost = COST_TRANS(dFastestCost, dShortestCost);
+			m_UserInfo->HandlePreferredEdgeID(pAttribute->nDirectedEdgeId, dShortestCost);	//减去捷径nDirectedEdgeId的时间
+			
+			AdjustByWeightRatio(pAttribute, pWeight);//根据wayid相对应的权重来调整
+		double travelETT = m_pCostModel->CalculateEdgeTravelETT(&m_fromLinkAttr, &dynamicSpeed);	//用动态或者静态速度算travelETT，最开始一段link的ETT
+		
+		//将当前的RouteItem添加到m_visitedTable中，当前即为起始seg
+		m_pFwdGraph->Hashmap_Add(sid, cost, travelETT, m_fromLinkAttr.nLength, SegmentId(-1, 0), CUT_NONE, nTunnelLength,cost, 0, m_fromLinkAttr.nLength, 4, -1, false, 0, dynamicSpeed.m_eWorstTrafficStatus, 0, travelETT, 0, 0, bIgnorePromotion);
+			m_mSegmentId2RelaxIdx //表示当前插入的segid和当前插入到m_visitedTable的（Relax）idx的映射关系
+			
+		//将当前的QUEUE_ITEM添加到m_qRoute，是一个带有最小cost的优先队列； 如果是新元素，同时添加m_LevelPromoteStrategy，其中会根据fclevel所在的数组元素进行累加
+		m_pFwdGraph->PQ_Add(sid, cost, true, cost);
+            
+        ++segCount;
+		
+		m_pRouteGraphExtender->ExtendGraph(endPoint, m_pFwdGraph->m_LevelPromoteStrategy.GetCurrentLevel());
+			
+	SetDest
+		
+		
+		
+	
+	CalculateDistance 
+	
+	Loop=》
+		//根据当前（前/后）选择相应SearchGraph，PQ_POP m_qRoute栈顶元素==》保存到m_currQueueItem，同时确定弹出的segid在m_mSegmentId2RelaxIdx对应的relaxid是否找到，返回m_visitedTable的relaxid所在元素
+		//PQ_POP成功的话，累加m_RouteStatus.forwardSearchStatic的settleCount
+		if (Next())	
+			//获得当前graph，对面graph
+			//赋予m_currQueueItem的settleSequence为 m_nForwardCount/m_nBackwardCount
+			//获取m_currQueueItem的诸如cost、ETT、length、segmentid、tunnellen等一些列属性
+			bool bRt = Relax(popEdgeInfo);
+		
+		
+		
+		
+		
+		
+	
+	
+
+		

@@ -1,0 +1,12 @@
+
+m_visitedTable
+当前访问过的routeitem，以segmentid为其一标识，而m_visitedTable的唯一标识为relaxid
+插入时，只有不在m_mSegmentId2RelaxIdx的元素才会被插入
+
+m_mSegmentId2RelaxIdx 
+未排序的map，以segmentid，relaxid为键值对
+
+m_qRoute 
+优先队列，存储的元素为QUEUE_ITEM，意为cost值最小的node，辅以segmentid标志
+
+

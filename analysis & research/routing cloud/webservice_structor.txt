@@ -1,0 +1,14 @@
+	class Ipc_Server : private boost::noncopyable
+	{
+	private:
+	    uint32_t m_port;
+	    boost::asio::io_service m_service;
+	    boost::asio::ip::tcp::endpoint m_ep;
+	    boost::asio::ip::tcp::acceptor m_acc;
+	    std::vector<server_entity_ptr> m_vEntities;
+	    RW_LOCK_T m_lock_rw;
+		std::queue<std::string> m_vFiles;
+        time_t m_startup; 
+        time_t m_cleanCachePoint;
+	};
+}
