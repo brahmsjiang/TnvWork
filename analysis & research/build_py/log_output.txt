@@ -1,0 +1,370 @@
+PS E:\Telenav\Rhine-MY21\sdk\bindings> python build.py -t win32 --skip-build -v
+Command with args :  ['build.py', '-t', 'win32', '--skip-build', '-v']
+build.py: Checking for build tools updates
+build.py: Checking in http://tar1.telenav.com:8080/repository/telenav/client/release/BuildTools
+build.py: Checking in http://tar1.telenav.com:8080/repository/telenav/client/beta/BuildTools
+build.py: Checking in http://tar1.telenav.com:8080/repository/telenav/client/trunk/BuildTools
+build.py: No updates, using BuildTools v1.3.496199 (trunk;win32)
+version:  2.28.9
+build.py: Log level is set to DEBUG
+build.py: Build script for NavKit. Type build.py --help for help.
+build.py: Platform: win32 (specify --platform to override)
+build.py: Building from SVN repo http://svn.telenav.com/tn/automotive/ReferencePlatform/branches/Rhine-MY21/sdk/bindings
+build.py: Not using branch isolation
+build.py: Not retrieving GoogleBreakpad because we're on win32 platform
+build.py: Not retrieving GoogleBreakpad because we're on win32 platform
+build.py: Not retrieving EventManager because we're on win32 platform
+build.py: Not retrieving EventManager because we're on win32 platform
+build.py: Not retrieving EventManager because we're on win32 platform
+build.py: Not retrieving EventManager because we're on win32 platform
+build.py: Not retrieving SmartHorizon because we're on win32 platform
+build.py: Not retrieving SmartHorizon because we're on win32 platform
+build.py: Not retrieving SmartHorizon because we're on win32 platform
+build.py: Changing to E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads
+build.py: Retrieving NavKit dependencies
+build.py: > java -Xms256m -Xmx512m  -jar "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\lib\java\ivy.jar"  -settings "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-settings.xml" -ivy "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy.xml" -retrieve "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\[module].[ext]"
+:: loading settings :: file = E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-settings.xml
+:: resolving dependencies :: telenav#NavKit;working@LT-ljiang
+        confs: [default]
+        found telenav#DP1_Routing;10.21.0+dirty in retrieve-url-single-trunk
+        [10.21.0+dirty] telenav#DP1_Routing;latest.release
+        found telenav#Curl;7.24.0+706b4bd6 in retrieve-url-single-trunk
+        found telenav#PlatformHacks;1.0.0+f67af895 in retrieve-url-single-trunk
+        found telenav#Zlib;1.2.0+533cecf8 in retrieve-url-single-trunk
+        found telenav#Traffic;2.8.0+4edb9565 in retrieve-url-single-trunk
+        found telenav#Foundation;2.0.0+aa07c6d3 in retrieve-url-single-trunk
+        found telenav#ThreadPool;2.0.0+97239fed in retrieve-url-single-trunk
+        found telenav#Boost;1.55.0+9257b99b in retrieve-url-single-trunk
+        found telenav#SQLite;3.16.0+56a76cf7 in retrieve-url-single-trunk
+        found telenav#Protobuf;2.4.0+56dcac1b in retrieve-url-single-trunk
+        found telenav#TnMapDataAccess;2.9.0+0ab34d4e in retrieve-url-single-trunk
+        found telenav#DataStreamingManager;1.0.0+d74ee2e1 in retrieve-url-single-trunk
+        found telenav#CppUTest;2.0.0+c26774b9 in retrieve-url-single-trunk
+        found telenav#Lz4;0.1.0+5b7e531b in retrieve-url-single-trunk
+        found telenav#MiniZip;1.0.0+0d149b31 in retrieve-url-single-trunk
+        found telenav#CJSON;1.0.0+43ae0200 in retrieve-url-single-trunk
+        found telenav#Bsdiff;1.0.0+65115705 in retrieve-url-single-trunk
+        found telenav#Lua;5.1.0+6be304f5 in retrieve-url-single-trunk
+        found telenav#GTest;1.7.0+107b9743 in retrieve-url-single-trunk
+        found telenav#TinyXML;1.2.0+fbed33d8 in retrieve-url-single-trunk
+        found telenav#ReadOSM;1.0.0+dcae138d in retrieve-url-single-trunk
+        found telenav#Expat;1.0.0+acc54312 in retrieve-url-single-trunk
+        found telenav#OpenLR;1.0.0+3bf7e36f in retrieve-url-single-trunk
+        found telenav#TnUrl;2.1.0+6fbeb5d8 in retrieve-url-single-trunk
+        found telenav#MapDisplayGraphics;5.12.0+b9397dc8 in retrieve-url-single-trunk
+        [5.12.0+b9397dc8] telenav#MapDisplayGraphics;latest.release
+        found telenav#FreeType;2.4.0+421eac87 in retrieve-url-single-trunk
+        found telenav#LandmarkDataAccess;0.5.0+28c21d7c in retrieve-url-single-trunk
+        found telenav#Jpeg;8.3.0+d688cb28 in retrieve-url-single-trunk
+        found telenav#TnTerrainAccess;2.8.0+730f43d6 in retrieve-url-single-trunk
+        found telenav#NavProtocol;2.0.0+ba45c420 in retrieve-url-single-trunk
+        found telenav#Png;1.6.0+b92f26f8 in retrieve-url-single-trunk
+        found telenav#NavEngine;4.16.0+561fc600 in retrieve-url-single-trunk
+        [4.16.0+561fc600] telenav#NavEngine;latest.release
+        found telenav#EventManager;1.5.0+28238328 in retrieve-url-single-trunk
+        [1.5.0+28238328] telenav#EventManager;latest.release
+        found telenav#AutomotivePlatform;1.3.3.557341 in retrieve-url-trunk
+        [1.3.3.557341] telenav#AutomotivePlatform;1.3.3.+
+        found telenav#TnGuidanceTextGenerator_Rhine_2018;2.3.520056 in retrieve-url-trunk
+:: resolution report :: resolve 21688ms :: artifacts dl 20ms
+        ---------------------------------------------------------------------
+        |                  |            modules            ||   artifacts   |
+        |       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+        ---------------------------------------------------------------------
+        |      default     |   35  |   5   |   4   |   0   ||   35  |   0   |
+        ---------------------------------------------------------------------
+:: retrieving :: telenav#NavKit
+        confs: [default]
+        0 artifacts copied, 35 already retrieved (0kB/27ms)
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\AutomotivePlatform.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\AutomotivePlatform.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\Boost.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\Boost.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\Bsdiff.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\Bsdiff.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\CJSON.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\CJSON.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\CppUTest.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\CppUTest.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\Curl.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\Curl.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\DataStreamingManager.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\DataStreamingManager.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\DP1_Routing.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\DP1_Routing.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\EventManager.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\EventManager.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\Expat.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\Expat.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\Foundation.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\Foundation.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\FreeType.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\FreeType.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\GTest.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\GTest.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\Jpeg.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\Jpeg.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\LandmarkDataAccess.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\LandmarkDataAccess.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\Lua.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\Lua.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\Lz4.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\Lz4.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\MapDisplayGraphics.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\MapDisplayGraphics.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\MiniZip.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\MiniZip.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\NavEngine.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\NavEngine.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\NavProtocol.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\NavProtocol.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\OpenLR.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\OpenLR.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\PlatformHacks.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\PlatformHacks.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\Png.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\Png.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\Protobuf.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\Protobuf.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\ReadOSM.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\ReadOSM.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\SQLite.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\SQLite.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\ThreadPool.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\ThreadPool.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\TinyXML.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\TinyXML.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\TnGuidanceTextGenerator_Rhine_2018.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\TnGuidanceTextGenerator_Rhine_2018.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\TnMapDataAccess.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\TnMapDataAccess.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\TnTerrainAccess.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\TnTerrainAccess.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\TnUrl.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\TnUrl.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\Traffic.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\Traffic.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py: Extracting E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\Zlib.zip
+build.py: > unzip -oq "E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-downloads\Zlib.zip" -d "E:\Telenav\Rhine-MY21\sdk\bindings\modules"
+build.py:
+build.py: Parsing E:\Telenav\Rhine-MY21\sdk\bindings\modules\win32\tmp\ivy-cache\telenav-NavKit-default.xml
+build.py: TnGuidanceTextGenerator_Rhine_2018
+build.py:     version: 2.3.520056
+build.py:     published: 2017-11-09 18:37:22
+build.py:     TnGuidanceTextGenerator_Rhine_2018 v.2.3.520056 (built from http://svn.telenav.com/tn/avengers/Speech/branches/RHINE-2018/libraries/TnSpeechWrapper/TnGuidanceTextGenerator rev 520056 on 2017-11-09T18:37 by buildmaster02@EC2D-JK-W32-02)
+build.py:
+build.py: AutomotivePlatform
+build.py:     version: 1.3.3.557341
+build.py:     published: 2019-05-08 01:00:22
+build.py:     AutomotivePlatform v.1.3.3.557341 (built from http://svn.telenav.com/tn/automotive/ReferencePlatform/branches/Rhine-MY21/sdk/AutomotivePlatform rev 557471 on 2019-05-08T00:56 by buildmaster02@EC2D-JK-W32-03)
+build.py:
+build.py: EventManager
+build.py:     version: 1.5.0+28238328
+build.py:     published: 2019-04-17 19:05:34
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: NavEngine
+build.py:     version: 4.16.0+561fc600
+build.py:     published: 2019-04-17 19:05:25
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: MapDisplayGraphics
+build.py:     version: 5.12.0+b9397dc8
+build.py:     published: 2019-04-17 19:06:48
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: Png
+build.py:     version: 1.6.0+b92f26f8
+build.py:     published: 2019-04-17 19:05:26
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: NavProtocol
+build.py:     version: 2.0.0+ba45c420
+build.py:     published: 2019-04-17 19:05:37
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: TnTerrainAccess
+build.py:     version: 2.8.0+730f43d6
+build.py:     published: 2019-04-17 19:05:40
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: Jpeg
+build.py:     version: 8.3.0+d688cb28
+build.py:     published: 2019-04-17 19:05:00
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: LandmarkDataAccess
+build.py:     version: 0.5.0+28c21d7c
+build.py:     published: 2019-04-17 19:05:36
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: FreeType
+build.py:     version: 2.4.0+421eac87
+build.py:     published: 2019-04-17 19:04:57
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: DP1_Routing
+build.py:     version: 10.21.0+dirty
+build.py:     published: 2019-04-17 19:06:16
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: Traffic
+build.py:     version: 2.8.0+4edb9565
+build.py:     published: 2019-04-17 19:06:03
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: TnUrl
+build.py:     version: 2.1.0+6fbeb5d8
+build.py:     published: 2019-04-17 19:05:41
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: OpenLR
+build.py:     version: 1.0.0+3bf7e36f
+build.py:     published: 2019-04-17 19:05:19
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: TnMapDataAccess
+build.py:     version: 2.9.0+0ab34d4e
+build.py:     published: 2019-04-17 19:05:51
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: ReadOSM
+build.py:     version: 1.0.0+dcae138d
+build.py:     published: 2019-04-17 19:05:39
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: Expat
+build.py:     version: 1.0.0+acc54312
+build.py:     published: 2019-04-17 19:04:55
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: TinyXML
+build.py:     version: 1.2.0+fbed33d8
+build.py:     published: 2019-04-17 19:05:04
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: GTest
+build.py:     version: 1.7.0+107b9743
+build.py:     published: 2019-04-17 19:05:16
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: Lua
+build.py:     version: 5.1.0+6be304f5
+build.py:     published: 2019-04-17 19:05:01
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: Bsdiff
+build.py:     version: 1.0.0+65115705
+build.py:     published: 2019-04-17 19:05:21
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: CJSON
+build.py:     version: 1.0.0+43ae0200
+build.py:     published: 2019-04-17 19:05:15
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: DataStreamingManager
+build.py:     version: 1.0.0+d74ee2e1
+build.py:     published: 2019-04-17 19:05:33
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: MiniZip
+build.py:     version: 1.0.0+0d149b31
+build.py:     published: 2019-04-17 19:05:23
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: Lz4
+build.py:     version: 0.1.0+5b7e531b
+build.py:     published: 2019-04-17 19:05:02
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: CppUTest
+build.py:     version: 2.0.0+c26774b9
+build.py:     published: 2019-04-17 19:04:51
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: Protobuf
+build.py:     version: 2.4.0+56dcac1b
+build.py:     published: 2019-04-17 19:05:29
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: SQLite
+build.py:     version: 3.16.0+56a76cf7
+build.py:     published: 2019-04-17 19:05:04
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: Foundation
+build.py:     version: 2.0.0+aa07c6d3
+build.py:     published: 2019-04-17 19:05:32
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: ThreadPool
+build.py:     version: 2.0.0+97239fed
+build.py:     published: 2019-04-17 19:05:30
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: Boost
+build.py:     version: 1.55.0+9257b99b
+build.py:     published: 2019-04-17 19:05:13
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: Curl
+build.py:     version: 7.24.0+706b4bd6
+build.py:     published: 2019-04-17 19:05:22
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: Zlib
+build.py:     version: 1.2.0+533cecf8
+build.py:     published: 2019-04-17 19:05:20
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: PlatformHacks
+build.py:     version: 1.0.0+f67af895
+build.py:     published: 2019-04-17 19:05:03
+build.py:     Built from commit b8b01a52b129af229d304a046dd2c0633e211b57, http://ec2d-jenkinsmaster-02.mypna.com:8080/job/nav/job/navcore/job/release%252Frhine-my21/21/
+build.py:
+build.py: NavKit has 35 dependencies on win32
+build.py:
+build.py: Generating project for NavKit
+build.py: Clearing E:\Telenav\Rhine-MY21\sdk\bindings\build\NavKit-win32
+build.py: Using custom E:\Telenav\Rhine-MY21\sdk\bindings\CMakeLists.txt
+build.py: Changing to E:\Telenav\Rhine-MY21\sdk\bindings\build\NavKit-win32
+build.py: > cmake -G "Visual Studio 8 2005" -DCMAKE_PLATFORM:STRING="win32" -DCMAKE_TOOLCHAIN_FILE="E:\Telenav\Rhine-MY21\sdk\bindings\build\NavKit-win32\win32-debug-toolchain.cmake" -DCMAKE_CONFIGURATION_TYPES:STRING="Release;Debug" "E:\Telenav\Rhine-MY21\sdk\bindings"
+-- TNPLATFORM:  win32
+-- TNPLATFORM:
+-- The C compiler identification is MSVC 14.0.50727
+-- The CXX compiler identification is MSVC 14.0.50727
+-- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio 8/VC/bin/cl.exe
+-- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio 8/VC/bin/cl.exe -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working CXX compiler: C:/Program Files (x86)/Microsoft Visual Studio 8/VC/bin/cl.exe
+-- Check for working CXX compiler: C:/Program Files (x86)/Microsoft Visual Studio 8/VC/bin/cl.exe -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+---------------------------build navclient now-----------------------------------------
+-- IsForAutoTest:
+-- IsStubBuild:
+-- -- it's Normal lib
+-- set NAV_CLIENT_NAME: libnavclient
+-- check NAV_CLIENT_NAME: libnavclient
+-- Project source path :E:/Telenav/Rhine-MY21/sdk/bindings
+-- Cmake platform :win32
+-- -- it's normal lib linking ..........................
+-- cmake path: E:/Telenav/Rhine-MY21/sdk/bindings/TNL/Module/MapRendering/iTypeProxy
+-- Configuring done
+-- Generating done
+CMake Warning:
+  The "Visual Studio 8 2005" generator is deprecated and will be removed in a
+  future version of CMake.
+
+  Add CMAKE_WARN_VS8=OFF to the cache to disable this warning.
+
+
+-- Build files have been written to: E:/Telenav/Rhine-MY21/sdk/bindings/build/NavKit-win32
+build.py: Not building NavKit because of --skip-build option
+build.py: Total time: 148.62s update: 138.67s
+Done
+PS E:\Telenav\Rhine-MY21\sdk\bindings>
