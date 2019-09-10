@@ -1,0 +1,9 @@
+ErrorCode InitState::executeCommand(Tn::Event::Command &command)
+void ControllerManager::setupStateMachine()
+void MapState::onEnterState(const std::string &previousState, bool isBack, const Tn::Event::Command &command)
+IController::ptr ControllerManager::activateController(const std::string &name, const Tn::Event::Command &command, bool useExist, const std::string &stateName)
+	IController::ptr ControllerManager::getController(const std::string &name, bool useExist)
+		mMap = boost::make_shared<MapController>(shared_from_this());
+
+				
+	void MapStateMap::onEnterState(const std::string &previousState, bool isBack, const Tn::Event::Command &command)
