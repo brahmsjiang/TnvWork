@@ -1,3 +1,19 @@
+void AutoSDKService::timeout(int timerId)
+	mTimerId = mTimer.registerTimer(this, 25);
+void AutoSDKService::processEvents()	
+void AutoSDKService::handleCommonPluginInitCompleteEvent(const TnCommonPluginInitializedEvent::ptr &event)
+	listener->onAutoSDKActivated(event->getStage());
+void InitModel::onAutoSDKActivated(int stage)
+	void SplashView::onInitCompleted()
+
+由定时器去实现：
+void BaseController::timeout(int timerId)
+        while (commandPtr = mCommandQueue.nextCommand())
+        {
+            Command &command = *commandPtr;//controller.startmap
+		error = controllerManager->dispatchCommand(command);
+		
+		
 ErrorCode InitState::executeCommand(Tn::Event::Command &command)
 void ControllerManager::setupStateMachine()
 void MapState::onEnterState(const std::string &previousState, bool isBack, const Tn::Event::Command &command)
@@ -5,5 +21,5 @@ IController::ptr ControllerManager::activateController(const std::string &name, 
 	IController::ptr ControllerManager::getController(const std::string &name, bool useExist)
 		mMap = boost::make_shared<MapController>(shared_from_this());
 
-				
+			===》搞了个1s定时器，timeout后去dispatch event	
 	void MapStateMap::onEnterState(const std::string &previousState, bool isBack, const Tn::Event::Command &command)
