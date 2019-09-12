@@ -1,13 +1,27 @@
+
+void InitController::onActivate()
+model->setListener(mSplashView);//SplashView：欢迎/启动界面
+=======================《关键点解释
+
 void AutoSDKService::timeout(int timerId)
 	mTimerId = mTimer.registerTimer(this, 25);
 void AutoSDKService::processEvents()	
 void AutoSDKService::handleCommonPluginInitCompleteEvent(const TnCommonPluginInitializedEvent::ptr &event)
 	listener->onAutoSDKActivated(event->getStage());
 void InitModel::onAutoSDKActivated(int stage)
-	void SplashView::onInitCompleted()
-
+	void SplashView::onInitCompleted()《=============关键点
+	this->sendCommand(makeControllerCommand(Controller::ActionName::startMap));
+	
+	
+Tn::Event::CommandId BaseView::sendCommand(const Tn::Event::CommandName &commandName, const char *receiverMethod)
+	Tn::Event::CommandId BaseView::sendCommand(Tn::Event::Command &command, const char *receiverMethod)
+	ErrorCode CommonController::dispatchCommand(Tn::Event::Command &command)
+//推入command
+		mCommandQueue.appendCommand(commandPtr);
+	
 由定时器去实现：
 void BaseController::timeout(int timerId)
+//拾取command
         while (commandPtr = mCommandQueue.nextCommand())
         {
             Command &command = *commandPtr;//controller.startmap
