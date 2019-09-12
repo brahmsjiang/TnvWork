@@ -1,10 +1,17 @@
 
+
+    Tn::Service::AutoSDKService::eventQueue()->registerForEvent<TnCommonPluginInitializedEvent>(boost::weak_ptr<TeleNavApp>(app.m_pImpl) /*theApp*/, &TeleNavApp::handleCommonPluginInitCompleteEvent);
+	的事件队列推送时机：
+	navkit初始化完毕 void LoganPluginCore::NotifyInitializeComplete(eTnStatus status, int stage)
+		 Tn::EventBusService::broadcastEvent<TnCommonPluginInitializedEvent>(ptrEvent);
+======================
+
 void InitController::onActivate()
 model->setListener(mSplashView);//SplashView：欢迎/启动界面
 =======================《关键点解释
 
 void AutoSDKService::timeout(int timerId)
-	mTimerId = mTimer.registerTimer(this, 25);
+	mTimerId = mTimer.registerTimer(this, 25);//// 25-millisecond timer
 void AutoSDKService::processEvents()	
 void AutoSDKService::handleCommonPluginInitCompleteEvent(const TnCommonPluginInitializedEvent::ptr &event)
 	listener->onAutoSDKActivated(event->getStage());
