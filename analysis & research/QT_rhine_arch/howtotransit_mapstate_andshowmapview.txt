@@ -1,0 +1,39 @@
+ 	NavHMI.exe!Tn::Presentation::MainMapView::onShow()  Line 1514	C++
+ 	NavHMI.exe!Tn::Presentation::BaseView::show()  Line 251 + 0xf bytes	C++
+ 	NavHMI.exe!Tn::Presentation::BaseView::setVisible(bool visible=true)  Line 139	C++
+ 	NavHMI.exe!Tn::Presentation::MainMapView::setVisible(bool visible=true)  Line 1952	C++
+ 	NavHMI.exe!Tn::Ui::TabletLayout::setViewToLayout(boost::shared_ptr<Tn::Ui::IView> view={...}, Tn::Ui::ILayout::ViewPosition viewPosition=FullView, int subPosition=0)  Line 337 + 0x25 bytes	C++
+ 	NavHMI.exe!Tn::Presentation::MapStateMap::onEnterState(const std::basic_string<char,std::char_traits<char>,std::allocator<char> > & previousState="", bool isBack=false, const Tn::Event::Command & command={...})  Line 105 + 0x7d bytes	C++
+ 	NavHMI.exe!Tn::Presentation::FiniteStateMachine::transitionToState(const std::basic_string<char,std::char_traits<char>,std::allocator<char> > & stateName="StateMap", const Tn::Event::Command & command={...})  Line 175 + 0x30 bytes	C++
+ 	NavHMI.exe!Tn::Presentation::FiniteStateMachine::start(const Tn::Event::Command & command={...})  Line 76 + 0x47 bytes	C++
+ 	NavHMI.exe!Tn::Presentation::BaseController::activateWithInitState(const Tn::Event::Command & command={...}, const std::basic_string<char,std::char_traits<char>,std::allocator<char> > & stateName="")  Line 348 + 0x21 bytes	C++
+ 	NavHMI.exe!Tn::Presentation::CommonController::activateWithInitState(const Tn::Event::Command & command={...}, const std::basic_string<char,std::char_traits<char>,std::allocator<char> > & stateName="")  Line 77	C++
+ 	NavHMI.exe!Tn::Presentation::BaseController::activate(const Tn::Event::Command & command={...})  Line 322 + 0x35 bytes	C++
+ 	NavHMI.exe!Tn::Presentation::ControllerManager::activateController(const std::basic_string<char,std::char_traits<char>,std::allocator<char> > & name="Map", const Tn::Event::Command & command={...}, bool useExist=false, const std::basic_string<char,std::char_traits<char>,std::allocator<char> > & stateName="")  Line 352 + 0x1e bytes	C++
+ 	NavHMI.exe!Tn::Presentation::MapState::onEnterState(const std::basic_string<char,std::char_traits<char>,std::allocator<char> > & previousState="Init", bool isBack=false, const Tn::Event::Command & command={...})  Line 46 + 0x75 bytes	C++
+ 	NavHMI.exe!Tn::Presentation::FiniteStateMachine::transitionToState(const std::basic_string<char,std::char_traits<char>,std::allocator<char> > & stateName="Map", const Tn::Event::Command & command={...})  Line 175 + 0x30 bytes	C++
+ 	NavHMI.exe!Tn::Presentation::InitState::executeCommand(Tn::Event::Command & command={...})  Line 85 + 0x32 bytes	C++
+ 	NavHMI.exe!Tn::Presentation::State::dispatchCommand(Tn::Event::Command & command={...})  Line 45 + 0x17 bytes	C++
+ 	NavHMI.exe!Tn::Presentation::FiniteStateMachine::dispatchCommand(Tn::Event::Command & command={...})  Line 41 + 0x21 bytes	C++
+ 	NavHMI.exe!Tn::Presentation::ControllerManager::dispatchCommand(Tn::Event::Command & command={...})  Line 81 + 0x2a bytes	C++
+>	NavHMI.exe!Tn::Presentation::BaseController::timeout(int timerId=1073741833)  Line 265 + 0x27 bytes	C++
+ 	NavHMI.exe!Tn::Timer::timerEvent(QTimerEvent * event=0x0019d6e0)  Line 102 + 0x13 bytes	C++
+
+	
+	---last----
+	 	NavHMI.exe!Tn::Presentation::BaseController::dispatchCommand(Tn::Event::Command & command={...})  Line 64	C++
+ 	NavHMI.exe!Tn::Presentation::CommonController::dispatchCommand(Tn::Event::Command & command={...})  Line 69	C++
+ 	NavHMI.exe!Tn::Presentation::BaseView::sendCommand(Tn::Event::Command & command={...}, const char * receiverMethod=0x00000000)  Line 300 + 0x1e bytes	C++
+ 	NavHMI.exe!Tn::Presentation::BaseView::sendCommand(const std::basic_string<char,std::char_traits<char>,std::allocator<char> > & commandName="Controller.startMap", const char * receiverMethod=0x00000000)  Line 317 + 0x13 bytes	C++
+ 	NavHMI.exe!Tn::Presentation::SplashView::onInitCompleted()  Line 59 + 0x32 bytes	C++
+ 	NavHMI.exe!Tn::Presentation::InitModel::onAutoSDKActivated(int stage=1)  Line 91 + 0x23 bytes	C++
+>	NavHMI.exe!Tn::Service::AutoSDKService::handleCommonPluginInitCompleteEvent(const boost::shared_ptr<TnCommonPluginInitializedEvent> & event={...})  Line 200 + 0x2a bytes	C++
+ 	NavHMI.exe!TnEventQueue::EventHandlerAdapter<TnCommonPluginInitializedEvent,Tn::Service::AutoSDKService>::handle(boost::shared_ptr<void> pEvent={...})  Line 273 + 0x1e bytes	C++
+ 	libnavclient-vc80-mt-gd.dll!TnEventQueue::ProcessEvents(unsigned int msecTimeout=0)  Line 82	C++
+ 	NavHMI.exe!Tn::Service::AutoSDKService::processEvents()  Line 131	C++
+ 	NavHMI.exe!Tn::Service::AutoSDKService::timeout(int timerId=234881031)  Line 123	C++
+ 	NavHMI.exe!Tn::Timer::timerEvent(QTimerEvent * event=0x0019dc54)  Line 102 + 0x13 bytes	C++
+
+	
+	
+	
